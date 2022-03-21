@@ -1,0 +1,16 @@
+Filter Query
+
+showAs ne 'oof' and start/dateTime ge '@{formatDateTime(utcNow(),'yyyy-MM-dd')}T00:00:00.0000000' and start/dateTime le '@{formatDateTime(utcNow(),'yyyy-MM-dd')}T23:59:00.0000000'
+
+Set Variable: Customer Name
+
+trim(last(split(first(split(outputs('Html_to_text')?['body'],'Email')),'Name: ')))
+
+Set Variable: PI
+
+trim(last(split(first(split(outputs('Html_to_text')?['body'], 'Question 2- ')), 'Answer- ')))
+
+Convert and Format Date/Time
+
+convertTimeZone(items('Apply_to_each_2')?['startWithTimeZone'],'UTC','Eastern Standard Time', 'dd/MM/yyyy')
+
